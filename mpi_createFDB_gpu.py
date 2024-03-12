@@ -34,12 +34,12 @@ mpisize = comm.Get_size()
 g_components = 3
 g_alignment = 1
 
-def print0(message):
+def print0(*args):
     if mpisize > 1:
         if mpirank == 0:
-            print(message, flush=True)
+            print(*args, flush=True)
     else:
-        print(message, flush=True)
+        print(*args, flush=True)
 
 
 def cal_pix(gray):
@@ -77,7 +77,7 @@ parser.add_argument('--load_root', default='./csv/data1k_fromPython/csv_rate0.2_
 parser.add_argument('--save_root', default='./bake_db/test', type = str, help='save png root')
 parser.add_argument('--image_size_x', default=362, type = int, help='image size x')
 parser.add_argument('--image_size_y', default=362, type = int, help='image size y')
-parser.add_argument('--image-res', default=362, type = int, help='image size y')
+parser.add_argument('--image_res', default=362, type = int, help='image size y')
 parser.add_argument('--pad_size_x', default=6, type = int, help='padding size x')
 parser.add_argument('--pad_size_y', default=6, type = int, help='padding size y')
 parser.add_argument('--iteration', default=200000, type = int, help='iteration')
@@ -92,6 +92,9 @@ parser.add_argument('-d', '--debug', action='store_true',default=False,help='Che
 parser.add_argument('-t', '--tomemory', action='store_true',default=False,help='Do not save the image but only retain to memory')
 
 def main():
+    args = parser.parse_args()
+    print0("\n\nAll arguments:\n",args)
+    print0("\n\n")
     args = parser.parse_args()
    
     # Set the seeds
@@ -230,7 +233,6 @@ def main():
     count = 0
     class_num = 0
     
-    dataset = []
     for csv_name in tqdm(csv_names):
         initial_time = time.perf_counter()
         name, ext = os.path.splitext(csv_name)

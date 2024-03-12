@@ -7,3 +7,4 @@ pyopengl
 pyopengl-accelerate
 pyglm
 tqdm
+pillow
