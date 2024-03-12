@@ -3,7 +3,7 @@
 /.python-version
 
 /output
-/.ssd
+ssd
 /csv/data1k_fromPython
 
 

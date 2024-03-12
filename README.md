@@ -58,4 +58,7 @@ To use multi-node on ABCI:
 qsub -g xxxxxx -l USE_SSH=1 -v SSH_PORT=2299 multi_node.sh
 ```
 
-
+Note: You can use the normal render way to a window on a local machine(NOT HEADLESS) using GLFW. Just modify the --backend option.
+```
+mpirun --bind-to socket --use-hwthread-cpus -np 10 python mpi_createFDB_gpu.py -g 1 --image_res 362 --iteration 100000 --save_root ssd/fdb1k --backend glfw
+```

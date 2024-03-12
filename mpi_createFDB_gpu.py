@@ -72,7 +72,7 @@ def key_event(window,key,scancode,action,mods):
         RenewParams = True
         less = True
 
-parser = argparse.ArgumentParser(description='PyTorch fractal make FractalDB')
+parser = argparse.ArgumentParser(description='Fast Renderer for FractalDB using GPUs')
 parser.add_argument('--load_root', default='./csv/data1k_fromPython/csv_rate0.2_category1000', type = str, help='load csv root')
 parser.add_argument('--save_root', default='./bake_db/test', type = str, help='save png root')
 parser.add_argument('--image_size_x', default=362, type = int, help='image size x')
@@ -87,7 +87,7 @@ parser.add_argument('--instance', default=10, type = int, help='#instance, 10 =>
 parser.add_argument('--rotation', default=4, type = int, help='Flip per category')
 parser.add_argument('--nweights', default=25, type = int, help='Transformation of each weights. Original DB is 25 from csv files')
 parser.add_argument('-g','--ngpus-pernode', default=1, type = int, help='Num of GPUs in the node')
-parser.add_argument('--backend', default='egl', type = str, help='{GLFW, EGL}')
+parser.add_argument('--backend', default='egl', type = str, help='{glfw, egl}')
 parser.add_argument('-d', '--debug', action='store_true',default=False,help='Check sanity for all the images... pixel count')
 parser.add_argument('-t', '--tomemory', action='store_true',default=False,help='Do not save the image but only retain to memory')
 
