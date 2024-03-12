@@ -48,8 +48,14 @@ qrsh -g gcc50533 -l rt_F=1 -l h_rt=02:00:00 -l USE_SSH=1 -v SSH_PORT=2299
 
 Use the following command to create FractalDB on the local SSD. You can modify the "save_root" option to save the dataset in a different location.
 ```
-mpirun --bind-to socket --use-hwthread-cpus -np 80 python mpi_createFDB_gpu.py -g 4 --image-res 362 --iteration 100000 --save_root ssd/fdb1k
+mpirun --bind-to socket --use-hwthread-cpus -np 80 python mpi_createFDB_gpu.py -g 4 --image_res 362 --iteration 100000 --save_root ssd/fdb1k
 ```
 
 This will create FractalDB-1k, including 1 million images. If you want to create more instances, modify the --instance flag.
+
+To use multi-node on ABCI:
+```
+qsub -g xxxxxx -l USE_SSH=1 -v SSH_PORT=2299 multi_node.sh
+```
+
 
